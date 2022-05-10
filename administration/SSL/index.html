@@ -1,0 +1,1984 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
+    
+    
+      
+        <title>SSL - FreeTAKServer Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3de6f41f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ssl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FreeTAKServer Documentation" class="md-header__button md-logo" aria-label="FreeTAKServer Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FreeTAKServer Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SSL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FreeTAKTeam/FreeTAKServer-User-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FreeTAKServer Documentation" class="md-nav__button md-logo" aria-label="FreeTAKServer Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    FreeTAKServer Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FreeTAKTeam/FreeTAKServer-User-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        FreeTAKServer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/REST_APIDoc/" class="md-nav__link">
+        REST API - Public
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/REST_API_InternalDoc/" class="md-nav__link">
+        REST API - Internal
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          FreeTAKHub
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FreeTAKHub" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          FreeTAKHub
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Integration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Integration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FreeTAKHub/Integration/NodeRedinstallation/" class="md-nav__link">
+        FreeTAKHub NodeRed
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Video
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Video" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Video
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FreeTAKHub/Video/Installation/" class="md-nav__link">
+        Video Server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          VideoChecker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="VideoChecker" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          VideoChecker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FreeTAKHub/VideoChecker/VideoCheck/" class="md-nav__link">
+        VideoCheck
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Voice
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Voice" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Voice
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FreeTAKHub/Voice/VoiceServer/" class="md-nav__link">
+        FreeTAKHub Voice installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          WebMap
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WebMap" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          WebMap
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FreeTAKHub/WebMap/Installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Video%20Guides/" class="md-nav__link">
+        Video Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Android
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Android" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Android
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Android/Android/" class="md-nav__link">
+        FTS Installation with Android
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Android/installUIOnAndroid/" class="md-nav__link">
+        FTS-UI Installation with Android
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Ansible
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Ansible" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Ansible/Ansible/" class="md-nav__link">
+        Install FreeTAKHub with Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Ansible/ZeroTouchInstall/" class="md-nav__link">
+        Zero Touch Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cloud" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Cloud/0_ConfigureMachine/" class="md-nav__link">
+        Configure and Connect to your cloud server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Cloud/DigitalOcean%20with%20TerraformDigitalOcean%20with%20Terraform/" class="md-nav__link">
+        DigitalOcean with Terraform
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/" class="md-nav__link">
+        Install
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/CLI/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/Debian/" class="md-nav__link">
+        Debian
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/Quick%20Start%20Guide/" class="md-nav__link">
+        Quick Start Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/Raspberry%20Pi/" class="md-nav__link">
+        Raspberry Pi 4/Raspberry Pi 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_6" type="checkbox" id="__nav_4_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_6">
+          Multiple Servers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Multiple Servers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Multiple Servers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/Multiple%20Servers/multiple/" class="md-nav__link">
+        Multiple Servers on Single Host
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_7" type="checkbox" id="__nav_4_5_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_7">
+          Upgrade
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Upgrade" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrade
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Docker/Upgrade/Upgrade/" class="md-nav__link">
+        Upgrading Existing Container
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/1_Install/" class="md-nav__link">
+        1. FreeTAK Server Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/3_ManualConfiguration/" class="md-nav__link">
+        3 ManualConfiguration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/Change/" class="md-nav__link">
+        Change
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/Running/" class="md-nav__link">
+        Running
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/Service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Linux/Update/" class="md-nav__link">
+        Update
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          RaspberryPie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RaspberryPie" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          RaspberryPie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/RaspberryPie/Installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Troubleshooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Troubleshooting/InstallationCheck/" class="md-nav__link">
+        Checking Your Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Troubleshooting/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_9" type="checkbox" id="__nav_4_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9">
+          Windows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Windows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Windows/FreeTAKServer_Windows_Install/" class="md-nav__link">
+        FreeTAKServer Install On Windows Computer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Installation/Windows/FreeTAKServer_Windows_Install_Tutorial/" class="md-nav__link">
+        FreeTAKServer Install On Windows Computer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Usage/Connecting%20ATAK/" class="md-nav__link">
+        Connecting ATAK to Pub Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Usage/Connecting%20WinTAK/" class="md-nav__link">
+        Connecting WinTAK
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Usage/ExCheck/" class="md-nav__link">
+        ExCheck
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Usage/VideoManagement/" class="md-nav__link">
+        Video Management
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Administration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Administration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SSL
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Wed%20Admin/" class="md-nav__link">
+        WebUI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/FreeTAKMumla/" class="md-nav__link">
+        FreeTAKMumla Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/FreeTAKUAS/" class="md-nav__link">
+        FreeTAKUAS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/takICU/" class="md-nav__link">
+        TAK ICU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/FreeTAKTeam/FreeTAKServer-User-Docs/edit/main/docs/docs/administration/SSL.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="ssl">SSL</h1>
+<p>Secure Sockets Layer (SSL) is a protocol for secure communication. FTS supports SSL since version 1.3.</p>
+<h1 id="automated-ssl-generation-and-deployment">Automated SSL Generation and Deployment</h1>
+<p>Since version 1.5, FTS features automated SSL generation and deployment. </p>
+<p>The automated generation and deployment is easier, please consider using that approach.  </p>
+<p>For more details, read the FTS manual <a href="https://github.com/FreeTAKTeam/FreeTakServer/blob/master/docs/FTS%20UI%20Documention.pdf">here</a>.</p>
+<h1 id="expected-file-structure">Expected File Structure</h1>
+<p><img alt="Expected File structure" src="../FTS%20Certifications%20structure.png" /></p>
+<h1 id="manual-ssl-installation-guide">Manual SSL Installation Guide</h1>
+<p>This method requires understanding of complex console commands.</p>
+<p>We do not provide support for certificate generation or deployment issues.</p>
+<p>We are currently exploring tools like <a href="https://github.com/patrickpr/YAOG">YAOG</a> to simplify the process.</p>
+<p>Some of the steps below to create a server and client certificate are adopted from:</p>
+<p><a href="https://blog.devolutions.net/2020/07/tutorial-how-to-generate-secure-self-signed-server-and-client-certificates-with-openssl/">https://blog.devolutions.net/2020/07/tutorial-how-to-generate-secure-self-signed-server-and-client-certificates-with-openssl/</a></p>
+<h2 id="1-install-openssl-on-windows-using-the-choco-package-manager">1. Install OpenSSL on Windows using the <code>choco</code> package manager</h2>
+<p>Go to: </p>
+<p><a href="https://docs.chocolatey.org/en-us/choco/setup#installing-chocolatey">https://docs.chocolatey.org/en-us/choco/setup#installing-chocolatey</a></p>
+<p>and install the <code>choco</code> package manager.</p>
+<p>Next, temporarily append the <code>choco</code> executable to the PATH variable. </p>
+<p>After PowerShell is closed, the appended path will resort back to its original state. </p>
+<pre><code class="language-console">$env:Path += &quot;;C:\ProgramData\chocolatey\bin&quot;
+</code></pre>
+<p>To permanently add to the PATH variable, refer to: </p>
+<p><a href="https://www.computerhope.com/issues/ch000549.htm">https://www.computerhope.com/issues/ch000549.htm</a></p>
+<p>Next, install OpenSSL:</p>
+<pre><code class="language-console">choco install openssl
+</code></pre>
+<p>Do not close PowerShell because you will need it for the next steps.</p>
+<h2 id="2-add-openssl-to-the-path">2. Add OpenSSL to the PATH</h2>
+<p>Most likely, you will be running a 64-bit system.  For a 64-bit system, enter:</p>
+<pre><code class="language-console">$env:Path += &quot;;C:\Program Files\OpenSSL-Win64\bin&quot;
+</code></pre>
+<p>For a 32-bit system (unlikely), enter:</p>
+<pre><code class="language-console">$env:Path += &quot;;C:\Program Files\OpenSSL-Win32\bin&quot;
+</code></pre>
+<h2 id="3-set-up-a-directory-for-openssl-outputs">3. Set up a directory for OpenSSL outputs</h2>
+<p>Go to your home directory.</p>
+<pre><code class="language-console">cd ~
+</code></pre>
+<p>Make an invisible folder called <code>.certs</code>.</p>
+<pre><code class="language-console">mkdir .certs
+</code></pre>
+<p>Go into the <code>.certs</code> directory.</p>
+<pre><code class="language-console">cd .certs
+</code></pre>
+<h2 id="4-generate-the-certificate-authority-certificate">4. Generate the Certificate Authority Certificate</h2>
+<p>Create a private key for the CA certifcate. </p>
+<pre><code class="language-console">openssl ecparam -name prime256v1 -genkey -noout -out ca.key
+</code></pre>
+<p>A <code>ca.key</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            232 ca.key
+</code></pre>
+<p>Next, create CA certificate from the newly created private key.</p>
+<pre><code class="language-console">openssl req -new -x509 -sha256 -key ca.key -out ca.crt
+</code></pre>
+<p>You will be prompted to enter in certificate details. Here is an example:</p>
+<pre><code class="language-console">You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:Los Angeles
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme Corporation
+Organizational Unit Name (eg, section) []:Dev
+Common Name (e.g. server FQDN or YOUR name) []:Wile E. Coyote
+Email Address []:wile@acmecorp.com
+</code></pre>
+<p>A <code>ca.crt</code> will be outputted to the directory.</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+</code></pre>
+<h2 id="5-generate-the-server-certificate">5. Generate the Server Certificate</h2>
+<p>Generate the server private key.</p>
+<pre><code class="language-console">openssl ecparam -name prime256v1 -genkey -noout -out server.key
+</code></pre>
+<p>A <code>server.key</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<p>Next, generate the server certificate signing request.</p>
+<pre><code class="language-console">openssl req -new -sha256 -key server.key -out server.csr
+</code></pre>
+<p>You will be prompted to enter in certificate details. Here is an example:</p>
+<pre><code class="language-console">You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:Los Angeles
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme Corporation
+Organizational Unit Name (eg, section) []:Dev
+Common Name (e.g. server FQDN or YOUR name) []:Wile E. Coyote
+Email Address []:wile@acmecorp.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:badpassword
+An optional company name []:Acme Corporation
+</code></pre>
+<p>A <code>server.csr</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM            626 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<p>Next, generate the server certificate.</p>
+<pre><code class="language-console">openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 1000 -sha256
+</code></pre>
+<p>Something similar to this will be outputted:</p>
+<pre><code class="language-console">Signature ok
+subject=C = US, ST = CA, L = Los Angeles, O = Acme Corporation, OU = Dev, CN = Wile E. Coyote, emailAddress = wile@acmecorp.com
+Getting CA Private Key
+</code></pre>
+<p>A <code>server.crt</code> and <code>ca.srl</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM             42 ca.srl
+-a----        11/10/1775   6:00 PM            820 server.crt
+-a----        11/10/1775   6:00 PM            626 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<h2 id="6-generate-the-client-certificate">6. Generate the Client Certificate</h2>
+<p>These are the same steps as above, except for the client.</p>
+<p>Generate the server private key.</p>
+<pre><code class="language-console">openssl ecparam -name prime256v1 -genkey -noout -out client.key
+</code></pre>
+<p>A <code>client.key</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM             42 ca.srl
+-a----        11/10/1775   6:00 PM            232 client.key
+-a----        11/10/1775   6:00 PM            820 server.crt
+-a----        11/10/1775   6:00 PM            382 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<p>Next, generate the client certificate signing request.</p>
+<pre><code class="language-console">openssl req -new -sha256 -key client.key -out client.csr
+</code></pre>
+<p>You will be prompted to enter in certificate details. Here is an example:</p>
+<pre><code class="language-console">You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:CA
+Locality Name (eg, city) []:Los Angeles
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Acme Corporation
+Organizational Unit Name (eg, section) []:Dev
+Common Name (e.g. server FQDN or YOUR name) []:Wile E. Coyote
+Email Address []:wile@acmecorp.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:badpassword
+An optional company name []:Acme Corporation
+</code></pre>
+<p>A <code>client.csr</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM             42 ca.srl
+-a----        11/10/1775   6:00 PM            626 client.csr
+-a----        11/10/1775   6:00 PM            232 client.key
+-a----        11/10/1775   6:00 PM            820 server.crt
+-a----        11/10/1775   6:00 PM            626 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<p>Next, generate the client certificate.</p>
+<pre><code class="language-console">openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days 1000 -sha256
+</code></pre>
+<p>Something similar to this will be outputted:</p>
+<pre><code class="language-console">Signature ok
+subject=C = US, ST = CA, L = Los Angeles, O = Acme Corporation, OU = Dev, CN = Wile E. Coyote, emailAddress = wile@acmecorp.com
+Getting CA Private Key
+</code></pre>
+<p>A <code>client.crt</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM             42 ca.srl
+-a----        11/10/1775   6:00 PM            816 client.crt
+-a----        11/10/1775   6:00 PM            626 client.csr
+-a----        11/10/1775   6:00 PM            232 client.key
+-a----        11/10/1775   6:00 PM            820 server.crt
+-a----        11/10/1775   6:00 PM            626 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<h2 id="7-make-sure-you-have-jre-installed">7. Make sure you have JRE installed</h2>
+<p>For example, install JRE8 if you do not have it installed:</p>
+<pre><code class="language-console">choco install jre8
+</code></pre>
+<h2 id="8-add-the-jre-bin-folder-to-the-path">8. Add the JRE bin folder to the PATH</h2>
+<p>Go into the Java folder:</p>
+<pre><code class="language-console">cd &quot;C:\Program Files\Java\&quot;
+</code></pre>
+<p>Find the JRE folder:</p>
+<pre><code class="language-console">dir
+</code></pre>
+<p>which will output something like:</p>
+<pre><code class="language-console">    Directory: C:\Program Files\Java
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        11/10/1775   6:00 PM                jre1.8.0_311
+</code></pre>
+<p>Go into the JRE folder:</p>
+<p>NOTE: <strong>Your JRE may be a different version</strong></p>
+<pre><code class="language-console">cd jre1.8.0_311
+</code></pre>
+<p>Go into the <code>bin</code> directory:</p>
+<pre><code class="language-console">cd bin
+</code></pre>
+<p>Output the absolute path of this directory:</p>
+<pre><code class="language-console">pwd
+</code></pre>
+<p>which will output out something like:</p>
+<pre><code class="language-console">Path
+----
+C:\Program Files\Java\jre1.8.0_311\bin
+</code></pre>
+<p>Add this directory to the PATH:</p>
+<pre><code class="language-console">$env:Path += &quot;;C:\Program Files\Java\jre1.8.0_311\bin&quot;
+</code></pre>
+<p>Now go back to your <code>.certs</code> folder:</p>
+<pre><code class="language-console">cd ~\.certs\
+</code></pre>
+<h2 id="9-generate-the-keystore">9. Generate the keystore</h2>
+<p>Enter this command to generate the keystore:</p>
+<pre><code class="language-console">keytool -genkey -v -keystore fts.keystore -alias fts -storetype PKCS12 -keyalg RSA -sigalg SHA256withRSA -keysize 2048 -validity 10000
+</code></pre>
+<p>You will be prompted to enter in keystore details. Here is an example:</p>
+<pre><code class="language-console">Enter keystore password:  badpassword
+Re-enter new password:   badpassword
+What is your first and last name?
+  [Unknown]:  Wile Coyote
+What is the name of your organizational unit?
+  [Unknown]:  Dev
+What is the name of your organization?
+  [Unknown]:  Acme Corporation
+What is the name of your City or Locality?
+  [Unknown]:  Los Angeles
+What is the name of your State or Province?
+  [Unknown]:  CA
+What is the two-letter country code for this unit?
+  [Unknown]:  US
+Is CN=test client, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=US correct?
+  [no]:  yes
+</code></pre>
+<p>Something similar to this will be outputted:</p>
+<pre><code class="language-console">Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+        for: CN=Wile Coyote, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=CA
+</code></pre>
+<p>An <code>fts.keystore</code> will be outputted to the directory:</p>
+<pre><code class="language-console">Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        11/10/1775   6:00 PM            944 ca.crt
+-a----        11/10/1775   6:00 PM            232 ca.key
+-a----        11/10/1775   6:00 PM             42 ca.srl
+-a----        11/10/1775   6:00 PM            816 client.crt
+-a----        11/10/1775   6:00 PM            626 client.csr
+-a----        11/10/1775   6:00 PM            232 client.key
+-a----        11/10/1775   6:00 PM           4019 fts.keystore
+-a----        11/10/1775   6:00 PM            820 server.crt
+-a----        11/10/1775   6:00 PM            626 server.csr
+-a----        11/10/1775   6:00 PM            232 server.key
+</code></pre>
+<h2 id="10-add-servercrt-and-clientcrt-certificates-to-the-keystore">10. Add <code>server.crt</code> and <code>client.crt</code> certificates to the keystore</h2>
+<p>Add the <code>server.crt</code> to the keystore:</p>
+<pre><code class="language-console">keytool -import -file server.crt -alias server -keystore fts.keystore
+</code></pre>
+<p>You will be prompted to enter in details. Here is an example:</p>
+<pre><code class="language-console">Enter keystore password:  badpassword
+Owner: EMAILADDRESS=wile@acmecorp.com, CN=Wile E. Coyote, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=US
+Issuer: EMAILADDRESS=wile@acmecorp.com, CN=Wile E. Coyote, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=US
+Serial number: 1667f79b550a2605c2fc04de3da4e3a63f921e99
+Valid from: Fri Jan 07 04:21:32 EST 2022 until: Thu Oct 03 05:21:32 EDT 2024
+Certificate fingerprints:
+         SHA1: 7A:2C:F4:58:6C:3E:CB:C3:C5:FA:F8:2C:74:8E:E2:9B:58:75:B2:D0
+         SHA256: 14:6F:7E:04:C6:25:69:83:55:21:9F:99:17:9C:AE:28:7C:CF:74:20:C5:60:FD:36:2F:57:68:68:30:FE:D8:EB
+Signature algorithm name: SHA256withECDSA
+Subject Public Key Algorithm: 256-bit EC key
+Version: 1
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+</code></pre>
+<p>Add the <code>client.crt</code> to the keystore:</p>
+<pre><code class="language-console">keytool -import -file client.crt -alias client -keystore fts.keystore
+</code></pre>
+<p>You will be prompted to enter in details. Here is an example:</p>
+<pre><code class="language-console">Enter keystore password:  badpassword
+Owner: EMAILADDRESS=wile@acmecorp.com, CN=Wile E. Coyote, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=US
+Issuer: EMAILADDRESS=wile@acmecorp.com, CN=Wile E. Coyote, OU=Dev, O=Acme Corporation, L=Los Angeles, ST=CA, C=US
+Serial number: 1667f79b550a2605c2fc04de3da4e3a63f921e9a
+Valid from: Fri Jan 07 04:24:30 EST 2022 until: Thu Oct 03 05:24:30 EDT 2024
+Certificate fingerprints:
+         SHA1: AA:09:6D:16:13:CD:45:AD:41:45:99:7D:39:C3:55:11:AC:BC:F5:28
+         SHA256: 46:75:A7:59:80:8D:CE:52:78:DD:7D:B9:17:90:BE:A9:6C:9E:33:F3:44:84:1C:21:74:59:54:08:D5:28:AC:92
+Signature algorithm name: SHA256withECDSA
+Subject Public Key Algorithm: 256-bit EC key
+Version: 1
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+</code></pre>
+<h2 id="11-install-ssl-on-the-client">11. Install SSL on the client</h2>
+<h3 id="atak">ATAK</h3>
+<ol>
+<li>Tap settings</li>
+<li>Manage server connections</li>
+<li>Open network connections</li>
+<li>Add a new connection </li>
+<li>Assign a name and the IP of your server</li>
+<li>Click on advanced options</li>
+<li>Uncheck "use default SSL/TLS certificates"</li>
+<li>Tap "import Truststore"</li>
+<li>Select your truststore file</li>
+<li>type the password provide to you</li>
+<li>Tap "Import client certificate"</li>
+<li>Select your client certificate</li>
+<li>Type the password</li>
+<li>Type "OK"</li>
+</ol>
+<h3 id="wintak">WinTAK</h3>
+<ol>
+<li>Go to Settings</li>
+<li>Network preferences</li>
+<li>Manage Server Connections</li>
+<li>Add Stream </li>
+<li>Assign a Description, IP and port of your server</li>
+<li>Select SSL as a protocol</li>
+<li>Uncheck "use default SSL/TLS certificates"</li>
+<li>Click "install Certificate Authority"</li>
+<li>Select your Certificate Authority file</li>
+<li>Type the password provide to you</li>
+<li>Click  "Install client certificate"</li>
+<li>Select your client certificate</li>
+<li>Type the password</li>
+<li>Click "OK"</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../CLI/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CLI" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              CLI
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Wed%20Admin/" class="md-footer__link md-footer__link--next" aria-label="Next: WebUI" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              WebUI
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
+      
+    
+  </body>
+</html>
